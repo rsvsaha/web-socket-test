@@ -1,0 +1,31 @@
+.formTest {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    
+}
+
+.urlarea {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: aqua;
+
+}
+
+.containerarea {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.listenerArea {
+    display: flex;
+    flex: 1;
+    
+}
+
+.emitterArea {
+    display: flex;
+    flex: 1;
+}
