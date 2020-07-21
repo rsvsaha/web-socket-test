@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {removeEmitter} from '../redux/actions';
 import {SocketClientClass} from '../services/socket';
-import styles from '../styles/emitter.module.css';
+import styles from '../styles/element.module.css';
 class EmitterComponent extends React.Component{
 
     constructor(props){
@@ -16,7 +16,8 @@ class EmitterComponent extends React.Component{
     }
     
     emitEvent = () => {
-        this.socketClient = new SocketClientClass(); 
+        this.socketClient = new SocketClientClass();
+        console.log(this.state.emitter_event);
         this.socketClient.getSocket().emit(this.state.emitter_event,{data:this.state.message});
     }
     
@@ -29,16 +30,16 @@ class EmitterComponent extends React.Component{
         return(
             <div className={styles.holderArea}>
                 <div className={styles.emitterFieldHolder}>
-                    <div className={styles.emitterField +' '+styles.leftAligned}>EmitterEvent:{this.state.emitter_event}</div>
-                    <div className={styles.emitterField +' '+styles.rightAligned}><input type="text" value={this.state.emitter_event} onChange={(event)=>{this.setState({emitter_event:event.target.value})}}></input></div>
+                    <div className={styles.labelHolder}>EmitterEvent:</div>
+                    <div className={styles.inputHolder}><input type="text" style={{width:"100%"}} value={this.state.emitter_event} onChange={(event)=>{this.setState({emitter_event:event.target.value})}}></input></div>
                 </div>
                 <div className={styles.emitterFieldHolder}>
-                    <div className={styles.emitterField +' '+styles.leftAligned}>Message:{this.state.message}</div>
-                    <div className={styles.emitterField +' '+styles.rightAligned}><textarea value={this.state.message} onChange={(event)=>{this.setState({message:event.target.value})}}></textarea></div>
+                    <div className={styles.labelHolder}>Message:</div>
+                    <div className={styles.inputHolder}><textarea style={{width:"100%",height:"100px"}} value={this.state.message} onChange={(event)=>{this.setState({message:event.target.value})}}></textarea></div>
                 </div>
                 <div className={styles.emitterFieldHolder}>
-                    <div className={styles.emitterField +' '+styles.leftAligned}><input type="button" value="EMIT" onClick={()=>{this.emitEvent()}}></input></div>
-                    <div className={styles.emitterField +' '+styles.rightAligned}><input type="button" value="REMOVE" onClick={this.removeEmitter}></input></div>
+                    <div className={styles.labelHolder}><input type="button" value="EMIT" onClick={()=>{this.emitEvent()}}></input></div>
+                    <div className={styles.inputHolder}><input type="button" value="REMOVE" onClick={this.removeEmitter}></input></div>
                 </div>
             </div>
 

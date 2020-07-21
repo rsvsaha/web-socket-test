@@ -28,4 +28,13 @@
 .emitterArea {
     display: flex;
     flex: 1;
+    
 }
+
+
+.container{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+

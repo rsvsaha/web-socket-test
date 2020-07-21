@@ -1,6 +1,7 @@
 import React from 'react';
 import ListenerComponent from './listerner';
 import {connect} from 'react-redux';
+import styles from '../styles/formTest.module.css';
 
 class ListnerContainerComponent extends React.Component {
 
@@ -10,7 +11,8 @@ class ListnerContainerComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.container}>
+            
                     {   
                         this.props.listenerArray.map((val) =>{
                             // console.log(key);

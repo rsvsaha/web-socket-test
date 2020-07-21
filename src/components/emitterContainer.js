@@ -1,6 +1,7 @@
 import React from 'react';
 import EmitterComponent from './emitter';
 import {connect} from 'react-redux';
+import styles from '../styles/formTest.module.css';
 
 class EmitterContainerComponent extends React.Component {
 
@@ -10,7 +11,7 @@ class EmitterContainerComponent extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.container}>
                     {   
                         this.props.emitterArray.map((val) =>{
                             // console.log(key);

@@ -12,6 +12,7 @@ class FormTest extends React.Component {
         super(props);
         this.state ={
             connectionURL:'',
+            isConnected:'DISCONNECTED'
         }
         this.upDateFieldValue = this.upDateFieldValue.bind(this);
     }
@@ -22,11 +23,14 @@ class FormTest extends React.Component {
 
     connectToSocket = (url)=> {
         this.socketClient = new SocketClientClass(url);
+        this.setState({isConnected:'CONNECTED'});
          
     }
 
     disconnectFromSocket = () =>{
-        console.log(this.socketClient.getSocket().disconnect());   
+        console.log(this.socketClient.getSocket().disconnect());
+        this.setState({isConnected:'DISCONNECTED'});
+
     }
 
     createListeners = () =>{
@@ -44,7 +48,7 @@ class FormTest extends React.Component {
         return (
             <div className={styles.formTest}>
                 <div className={styles.urlarea}>
-                <label>Connection URL:{this.state.connectionURL}</label>
+                <label>Connection URL:{this.state.connectionURL} ({this.state.isConnected})</label>
                 <br></br>
                 <input id="connectionURL" type="text" value={this.state.connectionURL} onChange={this.upDateFieldValue}></input>
                 <br></br>
